@@ -4,6 +4,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,19 +29,20 @@ namespace Business.Concrete
             _carDal.Delete(car);
         }
 
-        public List<Car> GetAll()
-        {
-            return _carDal.GetAll();
-        }
-
-        public void GetById(int carId)
-        {
-            _carDal.GetById(carId);
-        }
-
         public void Update(Car car)
         {
             _carDal.Update(car);
         }
+
+        public List<Car> GetAll(Expression<Func<Color, bool>> filter = null)
+        {
+            return _carDal.GetAll();
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            return _carDal.Get(filter);
+        }
+
     }
 }
