@@ -21,7 +21,15 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if(car.Id==6 && car.DailyPrice>0)
+            { 
+                _carDal.Add(car);
+                Console.WriteLine("eklendi");
+            }
+            else 
+            { 
+                Console.WriteLine("eklenemedi");
+            }
         }
 
         public void Delete(Car car)

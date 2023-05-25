@@ -13,10 +13,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EFCarDal());
            // carManager.Add(new Car { Id = 3, BrandId = 1, ColorId = 2, DailyPrice = 11, ModelYear = 2009, Description = "c" });
-            foreach (var item in carManager.GetAll())
-            {
-                Console.WriteLine(item.Description);
-            }
+            
             BrandManager brandManager = new BrandManager(new EFBrandDal());
             
             foreach (var item in brandManager.GetAll())
@@ -25,9 +22,14 @@ namespace ConsoleUI
             }
 
             ColorManager colorManager = new ColorManager(new EFColorDal());
-            
 
-
+            Car car = new Car {  BrandId = 2,ColorId=3,DailyPrice=10,ModelYear=1889,Description="d" };
+            carManager.Add(car);
+           
+            foreach (var item in carManager.GetAll())
+            {
+                Console.WriteLine(item.Description);
+            }
 
             foreach (var item in colorManager.GetAll()) { Console.WriteLine(item.Name); }
             Console.WriteLine("hhhhhhhhh");

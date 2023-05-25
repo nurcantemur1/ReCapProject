@@ -14,7 +14,11 @@ namespace DataAccess.Concrete.EF
     {
         public void Add(Car entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context=new RentACarContext())
+            {
+                context.Set<Car>().Add(entity);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Car entity)
