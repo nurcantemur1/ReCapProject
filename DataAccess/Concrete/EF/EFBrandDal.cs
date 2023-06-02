@@ -14,12 +14,20 @@ namespace DataAccess.Concrete.EF
     {
         public void Add(Brand entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context =new RentACarContext())
+            {
+                context.Set<Brand>().Add(entity);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Brand entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                context.Set<Brand>().Remove(context.Set<Brand>().SingleOrDefault(p=>p.Id==entity.Id));
+                context.SaveChanges();
+            }
         }
 
 
@@ -36,12 +44,17 @@ namespace DataAccess.Concrete.EF
         {
             using (RentACarContext context = new RentACarContext())
             {
-                return context.Set<Brand>().Find(filter);
+                return context.Set<Brand>().SingleOrDefault(filter);
             }
         }
         public void Update(Brand entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                var up = context.Set<Brand>().SingleOrDefault(p=>p.Id==entity.Id);
+                up.Name=entity.Name;
+                context.SaveChanges();
+            }
         }
     }
 }

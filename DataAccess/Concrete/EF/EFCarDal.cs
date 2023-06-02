@@ -23,14 +23,18 @@ namespace DataAccess.Concrete.EF
 
         public void Delete(Car entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                context.Set<Car>().Remove(context.Set<Car>().SingleOrDefault(p=>p.Id==entity.Id));
+                context.SaveChanges();
+            }
         }
 
         public Car Get(Expression<Func<Car, bool>> filter)
         {
             using (RentACarContext context=new RentACarContext())
             {
-                return context.Set<Car>().Find(filter);
+                return context.Set<Car>().SingleOrDefault(filter);
             }
         }
 
@@ -46,22 +50,17 @@ namespace DataAccess.Concrete.EF
 
         public void Update(Car entity)
         {
-            throw new NotImplementedException();
-        }
-        public List<Car> GetCarsByBrandId(int brandId)
-        {
             using (RentACarContext context = new RentACarContext())
             {
-                return context.Set<Car>().Where(p => p.BrandId == brandId).ToList();
+                var up = context.Set<Car>().SingleOrDefault(p=>p.Id==entity.Id);
+                up.DailyPrice=entity.DailyPrice;
+                up.ModelYear=entity.ModelYear;
+                up.ColorId=entity.ColorId;
+                up.BrandId=entity.BrandId;
+                context.SaveChanges();
             }
         }
-        public List<Car> GetCarsByColorId(int colorId)
-        {
-            using (RentACarContext context = new RentACarContext())
-            {
-                return context.Set<Car>().Where(p => p.ColorId == colorId).ToList();
-            }
-        }
+    
     }
 }
 

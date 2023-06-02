@@ -12,30 +12,61 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             CarManager carManager = new CarManager(new EFCarDal());
-           // carManager.Add(new Car { Id = 3, BrandId = 1, ColorId = 2, DailyPrice = 11, ModelYear = 2009, Description = "c" });
-            
             BrandManager brandManager = new BrandManager(new EFBrandDal());
-            
+            ColorManager colorManager = new ColorManager(new EFColorDal());
+
+            // carManager.Add(new Car { Id = 3, BrandId = 1, ColorId = 2, DailyPrice = 11, ModelYear = 2009, Description = "c" });
+
+            // GetBrand(brandManager);
+
+            //AddCar(carManager);
+
+            // GetColor(colorManager);
+
+            //GetCarsByBrandIdd(carManager);
+            //GetCarsByColorIdd(carManager);
+
+            Console.ReadLine();
+        }
+
+        private static void GetCarsByColorIdd(CarManager carManager)
+        {
+            foreach (var item in carManager.GetCarsByColorId(1))
+            {
+                Console.WriteLine(item.ModelYear + " --- " + item.ColorId);
+            }
+        }
+
+        private static void GetCarsByBrandIdd(CarManager carManager)
+        {
+            foreach (var c in carManager.GetCarsByBrandId(5))
+            {
+                Console.WriteLine(c.Description);
+            }
+        }
+
+        private static void GetBrand(BrandManager brandManager)
+        {
             foreach (var item in brandManager.GetAll())
             {
                 Console.WriteLine(item.Name);
             }
+        }
 
-            ColorManager colorManager = new ColorManager(new EFColorDal());
+        private static void GetColor(ColorManager colorManager)
+        {
+            foreach (var item in colorManager.GetAll()) { Console.WriteLine(item.Name + "-------"); }
+        }
 
-            Car car = new Car {  BrandId = 2,ColorId=3,DailyPrice=10,ModelYear=1889,Description="d" };
+        private static void AddCar(CarManager carManager)
+        {
+            Car car = new Car { BrandId = 2, ColorId = 3, DailyPrice = 10, ModelYear = 1889, Description = "d" };
             carManager.Add(car);
-           
+
             foreach (var item in carManager.GetAll())
             {
                 Console.WriteLine(item.Description);
             }
-
-            foreach (var item in colorManager.GetAll()) { Console.WriteLine(item.Name); }
-            Console.WriteLine("hhhhhhhhh");
-
-
-            Console.ReadLine();
         }
     }
 }

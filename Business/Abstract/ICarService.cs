@@ -15,5 +15,7 @@ namespace Business.Abstract
         void Delete(Car car);
         List<Car> GetAll(Expression<Func<Color, bool>> filter = null);
         Car Get(Expression<Func<Car, bool>> filter);
+        List<Car> GetCarsByBrandId(int brandId);
+        List<Car> GetCarsByColorId(int colorId);
     }
 }

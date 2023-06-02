@@ -21,22 +21,28 @@ namespace Business.Concrete
 
         public void Add(Brand brand)
         {
-            throw new NotImplementedException();
+            _branddal.Add(brand);
         }
 
         public void Delete(Brand brand)
         {
-            throw new NotImplementedException();
+            _branddal.Delete(brand);
         }
 
-        public List<Brand> GetAll()
+        public Brand Get(Expression<Func<Brand, bool>> filter)
         {
-            return _branddal.GetAll();
+            return _branddal.Get(filter);
         }
+
+        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
+        {
+            return _branddal.GetAll(filter);
+        }
+
 
         public void Update(Brand brand)
         {
-            throw new NotImplementedException();
+            _branddal.Update(brand);
         }
     }
 }

@@ -13,12 +13,20 @@ namespace DataAccess.Concrete.EF
     {
         public void Add(Color entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                context.Set<Color>().Add(entity);
+                context.SaveChanges();
+            }
         }
 
         public void Delete(Color entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                context.Set<Color>().Remove(context.Set<Color>().SingleOrDefault(p => p.Id == entity.Id));
+                context.SaveChanges();
+            }
         }
 
         public Color Get(Expression<Func<Color, bool>> filter)
@@ -41,7 +49,12 @@ namespace DataAccess.Concrete.EF
 
         public void Update(Color entity)
         {
-            throw new NotImplementedException();
+            using (RentACarContext context = new RentACarContext())
+            {
+                var up = context.Set<Color>().SingleOrDefault(p => p.Id == entity.Id);
+                up.Name=entity.Name;
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Business.Abstract
         void Update(Color color);
         void Delete(Color color);
         List<Color> GetAll(Expression<Func<Color, bool>> filter = null);
+        Color Get(Expression<Func<Color,bool>> filter);
         
     }
 }

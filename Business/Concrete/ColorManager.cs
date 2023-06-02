@@ -22,14 +22,18 @@ namespace Business.Concrete
 
         public void Add(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Add(color);
         }
 
         public void Delete(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Delete(color);
         }
 
+        public Color Get(Expression<Func<Color, bool>> filter)
+        {
+            return _colorDal.Get(filter);
+        }
 
         public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
@@ -38,7 +42,7 @@ namespace Business.Concrete
 
         public void Update(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Update(color);
         }
     }
 }
