@@ -15,6 +15,11 @@ namespace ConsoleUI
             BrandManager brandManager = new BrandManager(new EFBrandDal());
             ColorManager colorManager = new ColorManager(new EFColorDal());
 
+            foreach (var item in carManager.carDetailsDto())
+            {
+                Console.WriteLine("{0},{1},{2},{3}",item.CarId,item.BrandName,item.ColorName,item.DailyPrice);
+            }
+
             // carManager.Add(new Car { Id = 3, BrandId = 1, ColorId = 2, DailyPrice = 11, ModelYear = 2009, Description = "c" });
 
             // GetBrand(brandManager);
