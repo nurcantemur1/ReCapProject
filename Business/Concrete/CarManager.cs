@@ -1,9 +1,13 @@
 ﻿using Business.Abstract;
+using Business.Constans;
+using Core.Utilities;
+using Core.Utilities.DataResults;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -20,52 +24,49 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if(car.Id==6 && car.DailyPrice>0)
-            { 
-                _carDal.Add(car);
-                Console.WriteLine("eklendi");
-            }
-            else 
-            { 
-                Console.WriteLine("eklenemedi");
-            }
+            _carDal.Add(car);
+            return new SuccessResult(Messagess.CarAdded,true);
         }
 
-        public void Delete(Car car)
+        public IDataResult<List<CarDetailsDto>> carDetailsDto()
+        {
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.carDetailsDtos());
+        }
+
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+            return new SuccessResult(Messagess.CarDeleted,true);
         }
 
-        public void Update(Car car)
+        public IDataResult<Car> Get(int carId)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == carId));
+
+        }
+
+        public IDataResult<List<Car>> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
+
+        }
+
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId));
+        }
+
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p=>p.ColorId==colorId));
+        }
+
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
-        }
-
-        public List<Car> GetAll(Expression<Func<Color, bool>> filter = null)
-        {
-            return _carDal.GetAll();
-        }
-
-        public Car Get(Expression<Func<Car, bool>> filter)
-        {
-            return _carDal.Get(filter);
-        }
-
-        public List<Car> GetCarsByBrandId(int brandId)
-        {
-            return _carDal.GetAll(p=>p.BrandId==brandId);
-        }
-
-        public List<Car> GetCarsByColorId(int colorId)
-        {
-            return _carDal.GetAll(p=>p.ColorId==colorId);
-        }
-
-        public List<CarDetailsDto> carDetailsDto()
-        {
-            return _carDal.carDetailsDtos();
+            return new SuccessResult(Messagess.CarUpdated,true);
         }
     }
 }
