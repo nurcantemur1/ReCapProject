@@ -21,5 +21,6 @@ namespace Core.Utilities
 
         public string Messages { get;}
         public bool Success { get; }
+
     }
 }

@@ -12,8 +12,7 @@ UserManager userManager = new UserManager(new EFUserDal());
 CustomerManager customerManager = new CustomerManager(new EFCustomerDal());
 RentalManager rentalManager = new RentalManager(new EFRentalDal());
 
-//  Rental rental=new Rental() {CarId=2,CustomerId=1,RentDate=DateTime.Now ,ReturnDate=DateTime.Now};
-arabakiralateslimet(rentalManager);
+//arabakiralateslimet(rentalManager);
 
 
 //var a = rentalManager.GetbyId(2).Data;
@@ -23,7 +22,7 @@ arabakiralateslimet(rentalManager);
 
 //userandcustAdd(userManager, customerManager);
 
-//branggetall(brandManager);
+branggetall(brandManager);
 
 // carDetailsDto0(carManager);
 

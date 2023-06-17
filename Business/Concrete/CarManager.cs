@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailsDto>> carDetailsDto()
         {
-            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.carDetailsDtos());
+            return new SuccessDataResult<List<CarDetailsDto>>(_carDal.carDetailsDtos(),true);
         }
 
         public IResult Delete(Car car)
@@ -43,24 +43,24 @@ namespace Business.Concrete
 
         public IDataResult<Car> Get(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(p => p.Id == carId), true);
 
         }
 
         public IDataResult<List<Car>> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),true);
 
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId),true);
         }
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p=>p.ColorId==colorId));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p=>p.ColorId==colorId),true);
         }
 
         public IResult Update(Car car)
