@@ -18,8 +18,8 @@ namespace Business.Abstract
         IDataResult<List<Rental>> GetAll(Expression<Func<Rental,bool>> filter=null);
         IDataResult<Rental> GetbyId(int id);
 
-        IResult kirala(Rental rental);
-        IResult teslimet(Rental rental);
+        IResult Kirala(Rental rental);
+        IResult TeslimEt(Rental rental);
 
     }
 }

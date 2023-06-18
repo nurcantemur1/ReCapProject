@@ -118,10 +118,10 @@ static void arabakiralateslimet(RentalManager rentalManager)
 {
     Rental rental = new Rental() { CarId = 3, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = null };
 
-    rentalManager.kirala(rental);
+    rentalManager.Kirala(rental);
     Console.WriteLine("araba kiralandı");
 
     rental.ReturnDate = DateTime.Now;
-    rentalManager.teslimet(rental);
+    rentalManager.TeslimEt(rental);
     Console.WriteLine("teslim edildi -" + rental.ReturnDate + "----------" + rental.CarId);
 }

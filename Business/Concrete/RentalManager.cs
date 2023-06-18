@@ -43,7 +43,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(p=>p.Id==id));
         }
 
-        public IResult kirala(Rental rental)
+        public IResult Kirala(Rental rental)
         {
             if (rental.ReturnDate==null)
             {
@@ -59,7 +59,7 @@ namespace Business.Concrete
             
         }
 
-        public IResult teslimet(Rental rental)
+        public IResult TeslimEt(Rental rental)
         {
             _rentalDal.Update(rental);
             return new SuccessResult();
