@@ -1,5 +1,5 @@
-﻿using Core.Utilities;
-using Core.Utilities.DataResults;
+﻿using Core.Utilities.Results;
+using Core.Utilities.Results.DataResults;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;

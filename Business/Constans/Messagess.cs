@@ -15,10 +15,15 @@ namespace Business.Constans
         public static string CarAdded = "Marka eklendi";
         public static string CarDeleted = "Marka silindi";
         public static string CarUpdated = "Marka güncelledi";
+        public static string ModelYearCheckTheCar = "arabanızın model yılı uygun değildir";
+
 
         public static string ColorAdded = "Renk eklendi";
         public static string ColorDeleted = "Renk silindi";
         public static string ColorUpdated = "Renk güncelledi";
 
+        public static string CarImageAdded="arabanıza resim eklediniz";
+        public static string CarImageDeleted = "resim silindi";
+        public static string CarImageUpdated = "resim güncelledi";
     }
 }
